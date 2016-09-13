@@ -1,0 +1,56 @@
+<h1 id="nameGroup">{{name}} </h1>
+<hr>
+<h3>Invite this group for</h3>
+<form method="get"  >
+
+    <select name="user" multiple>
+        {{#each users}}
+            <option>{{this}}</option>
+        {{/each}}
+    </select>
+    <h3>{{message}}</h3>
+    <hr>
+    <input type="radio" name="permission" value="read and write"> read and write <br>
+    <input type="radio" name="permission" value="read"> read <br>
+    <input id="invite" type="submit" value="invite"/>
+</form>
+<hr>
+<h3>Edit Invites</h3>
+<form method="get">
+    <select name="invite">
+        {{#each invites}}
+            <option>{{this}}</option>
+        {{/each}}
+    </select>
+     <hr>
+    <input  type="submit" value="delete"/>
+</form>
+
+
+<hr>
+<h3> Edit Group</h3>
+
+<div class="form-group">
+    <select name="group" id="sel" >
+        {{#each group}}
+            <option>{{this}}</option>
+        {{/each}}
+    </select>
+<input type="submit" onclick="removeAjax()"  name="delete" value="Delete">
+</div>
+    <hr>
+
+<button  type="submit"  onclick="addAjax()">saveFields</button>
+<div id="create" >
+    NameField </br>
+
+</div>
+<button id="b1" onclick="xpto()"> add field</button>
+<hr>
+<form   method="get">
+    </br>  Numero de jogos:
+    <input type="text" name="jogos"/>
+    </br>
+    <input type="submit" value="Procurar" />
+</form>
+

@@ -1,0 +1,84 @@
+
+<h2>{{nameGroup}}</h2>
+<hr>
+<form   method="get">
+    </br>  number  of Episodes:
+    <input type="number" name="n"/>
+    <input type="submit" value="GO" />
+</form>
+<hr>
+<h4>My series</h4>
+<div>
+    {{#each series as |serie| }}
+        <div>
+            <a href={{serie.url}}> {{serie.name}}</a>
+        </div>
+        <img src={{serie.image}} style="width:150px;height:150px;" >
+    {{/each}}
+</div>
+
+<hr>
+<h3>Invite this group for</h3>
+<form method="post"  >
+
+    <select name="user" multiple>
+        {{#each users}}
+            <option>{{this}}</option>
+        {{/each}}
+    </select>
+    <h3>{{message}}</h3>
+    <input type="radio" name="permission" value="rw"> rw <br>
+    <input type="radio" name="permission" value="read"> read <br>
+    <input id="invite" type="submit" value="invite"/>
+</form>
+<hr>
+<h3>Edit Permissions</h3>
+<form method="post">
+    <select name="invite">
+        {{#each invites}}
+            <option>{{this}}</option>
+        {{/each}}
+    </select>
+    <input type="radio" name="permission" value="rw"> rw <br>
+    <input type="radio" name="permission" value="read"> read <br>
+    <input  type="submit" value="delete"/>
+</form>
+<hr>
+<h4>next or previous Episodes</h4>
+<div>
+
+    {{#each episodes as |episode| }}
+        <div>
+            <a href={{episode.url}}> {{episode.name}}</a>
+        </div>
+    {{/each}}
+</div>
+
+<hr>
+<h3>Add Series</h3>
+<form id="create"  method="post" >
+    Name </br>
+    <input type="text" name="nameSerie"/>
+    <input id="btt" type="submit" value="save"/>
+</form>
+
+<button id="b1" onclick="xpto()"> add field</button>
+
+<hr>
+
+<h3>Delete My Series</h3>
+
+<form method="Post">
+    <select name="deletedSerie">
+        {{#each series as |serie|}}
+            <option>{{serie.name}}</option>
+        {{/each}}
+    </select>
+    <input type="submit" value="delete"/>
+</form>
+
+
+
+
+
+

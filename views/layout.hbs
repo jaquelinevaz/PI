@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Series</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script>
+          var i = 0;
+          function xpto() {
+              var input = document.createElement("input")
+              var hr=document.createElement("hr")
+              input.setAttribute("name",i)
+              input.setAttribute("type","text")
+              document.getElementById("create").appendChild(hr)
+              document.getElementById("create").appendChild(input)
+
+              i++;
+          }
+
+
+
+
+          function addAjax() {
+              var child=document.getElementById("create").getElementsByTagName("input")
+              var obj={}
+              var str=""
+              for(var i= 0;i<child.length;i++){
+                  if(child[i].getAttribute("type")!="submit") {
+                      var name = child[i].getAttribute("name")
+                      //obj[name] = child[i].value
+                      str+=name+"="+child[i].value+"&"
+                  }
+              }
+              str=str.slice(0,-1)
+              //alert()
+
+              var xhttp = new XMLHttpRequest();
+              xhttp.open("Post","/group/");
+              xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+
+              xhttp.onreadystatechange = function() {
+                  if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+                      alert('Group created')
+
+                  }
+
+              };
+              xhttp.send(obj);
+          }
+
+          function removeAjax() {
+
+              var mySelect=document.getElementById("deletedGroup")
+
+              var aux=mySelect[i].value
+
+              var xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function () {
+                  if (xhttp.readyState == 4 && xhttp.status == 200) {
+
+                      mySelect.remove(aux)
+                      alert("group removed")
+                  }
+              }
+              xhttp.open("get","/group?deletedGroup="+aux);
+               xhttp.send()
+
+          }
+
+
+      </script>
+  </head>
+  <body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+
+          {{#if isUser}}
+
+              <a href="/"> <input type="button"  class="btn btn-success" value="Logout"> </a>
+          {{else}}
+              <div id="navbar" class="navbar-collapse collapse">
+                  <form class="navbar-form navbar-right" action="/login" method="post">
+                      <div class="form-group">
+                          <input type="email" placeholder="Email" name="email" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          <input type="password" placeholder="Password" name="password" class="form-control">
+                      </div>
+                      <input type="submit" class="btn btn-success" value="Sign in">
+                      <a href="/register">
+                          <input type="button"  class="btn btn-success" value="Sign up">
+                      </a>
+                      <p><a href="/recoverPassword/"> Remember me</a></p>
+                  </form>
+              </div><!--/.navbar-collapse -->
+          {{/if}}
+      </div>
+  </nav>
+<br>
+  <br>
+  <br>
+    {{{body}}}
+
+  <footer>
+      <p class="text-center"> ©ISEL-Insituto Superior de Engenharia e de Lisboa 2016 </p>
+  </footer>
+  </body>
+</html>

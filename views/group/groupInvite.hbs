@@ -1,0 +1,12 @@
+<form method="get"  >
+
+    <select name="group">
+        {{#each group}}
+            <option>{{this.groupName}}</option>
+        {{/each}}
+    </select>
+    <hr>
+    <input type="radio" name="permission" value="accept"> accept <br>
+    <input type="radio" name="permission" value="decline"> decline <br>
+    <input type="submit" value="save"/>
+</form>

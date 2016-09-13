@@ -1,0 +1,48 @@
+
+<h2>My favorite Groups </h2>
+
+<h3>Create Group</h3>
+<form id="create" action="/group/" method="Post" >
+     Name </br>
+    <input type="text" name="nameGroup"/>
+    <input id="btt" type="submit" value="save"/>
+
+</form>
+
+<button id="b1" onclick="xpto()"> add field</button>
+
+<a href="/group/invite/">you have {{number}} messages</a>
+<a href=""></a>
+
+<h3>Delete Group</h3>
+<form action="/group/" method="get">
+
+    <input type="text"  name="delete" />
+    <input type="submit" value="delete Group"  />
+
+</form>
+
+
+<h3>Other Groups</h3>
+
+
+<div>
+            {{#each teams}}
+                    <a href=/group/{{this.groupName}}> {{this.groupName}} </a>
+                    <br>
+            {{/each}}
+
+</div>
+
+
+<h3>My Groups</h3>
+
+
+<div>
+    {{#each myGroups}}
+            <a href=/group/{{this}}> {{this}} </a>
+            <br>
+    {{/each}}
+
+</div>
+

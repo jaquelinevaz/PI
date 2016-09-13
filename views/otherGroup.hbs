@@ -1,0 +1,33 @@
+<form   method="get">
+    </br>  number  of Episodes:
+    <input type="number" name="n"/>
+    <input type="submit" value="GO" />
+</form>
+<hr>
+<h4>My series</h4>
+<div>
+    {{#each series as |serie| }}
+        <div>
+            <a href={{serie.url}}> {{serie.name}}</a>
+        </div>
+        <img src={{serie.image}} style="width:150px;height:150px;" >
+    {{/each}}
+</div>
+<hr>
+<h4>next or previous Episodes</h4>
+<div>
+
+    {{#each episodes as |episode| }}
+        <div>
+            <a href={{episode.url}}> {{episode.name}}</a>
+        </div>
+    {{/each}}
+</div>
+
+
+
+
+
+
+
+

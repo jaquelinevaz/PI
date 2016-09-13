@@ -1,0 +1,52 @@
+<form   method="get">
+    </br>  number  of Episodes:
+    <input type="number" name="n"/>
+    <input type="submit" value="GO" />
+</form>
+    <h4>My series</h4>
+<div>
+                {{#each series as |serie| }}
+                    <div>
+                        <a href={{serie.url}}> {{serie.name}}</a>
+                    </div>
+                    <img src={{serie.image}} style="width:150px;height:150px;" >
+                {{/each}}
+</div>
+<h4>next or previous Episodes</h4>
+<div>
+
+                 {{#each episodes as |episode| }}
+                      <div>
+                          <a href={{episode.url}}> {{episode.name}}</a>
+                      </div>
+                {{/each}}
+</div>
+
+
+<h3>Add Series</h3>
+<form id="create"  method="post" >
+    Name </br>
+    <input type="text" name="nameSerie"/>
+    <input id="btt" type="submit" value="save"/>
+</form>
+
+<button id="b1" onclick="xpto()"> add field</button>
+
+
+
+<h3>Delete My Groups</h3>
+
+<form method="get">
+    <select name="deletedSerie">
+        {{#each series as |serie|}}
+            <option>{{serie.name}}</option>
+        {{/each}}
+    </select>
+    <input type="submit" value="delete"/>
+</form>
+
+
+
+
+
+
